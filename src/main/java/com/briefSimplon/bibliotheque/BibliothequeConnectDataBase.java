@@ -11,10 +11,10 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.criterion.MatchMode;
 
-public class bibliothequeConnectDataBase{
-	private static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("library");
+public class BibliothequeConnectDataBase{
+	protected static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("library");
 	
-	public void ajouterLivreBDD(Livre livre) {
+	public void ajouterLivreBDD(final Livre livre) {
 		EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 		EntityTransaction et = null;
 		try {
@@ -59,7 +59,7 @@ public class bibliothequeConnectDataBase{
 
 	}
 	
-	public static void rechercheLivresBDD(String titre) {
+	public static void rechercheLivresBDD(final String titre) {
 		EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 		String strQuery = "SELECT a FROM Livre a WHERE a.titre LIKE :titre";
 		TypedQuery<Livre> tq = em.createQuery(strQuery, Livre.class);

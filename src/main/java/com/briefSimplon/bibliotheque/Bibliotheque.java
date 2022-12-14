@@ -3,12 +3,7 @@ package com.briefSimplon.bibliotheque;
 import java.util.Scanner;
 
 public class Bibliotheque {
-	/**
-	 * Méthode qui permet d'ajouter des livres dans la bibliothèque saisie par
-	 * l'utilisateur.
-	 * @return 
-	 * @return 
-	 */
+
 	public Livre ajouterUnLivre() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Titre du livre : ");
@@ -31,10 +26,25 @@ public class Bibliotheque {
 	    return livre;
 	}
 	
-	public String rechercheLivre() {
+	public String rechercheModifLivre() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Recheche livre : ");
+		System.out.println("Quel livre voulez vous rechercher: ");
 		String rechercheLivre = sc.nextLine();
 		return rechercheLivre;
+	}
+	
+	public void modifierLivre(){
+		Scanner sc = new Scanner(System.in);
+		int choix = sc.nextInt();	
+		switch(choix) {
+		  case 1:
+		    // code block
+		    break;
+		  case 2:
+		    // code block
+		    break;
+		  default:
+		    // code block
+		}
 	}
 }

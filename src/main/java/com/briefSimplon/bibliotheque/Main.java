@@ -10,7 +10,8 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		Bibliotheque bibliotheque1 = new Bibliotheque();
-		bibliothequeConnectDataBase bibliotheque1Connect = new bibliothequeConnectDataBase();
+		BibliothequeConnectDataBase bibliotheque1Connect = new BibliothequeConnectDataBase();
+		ModifierLivre modifier = new ModifierLivre();
 
 		try {
 			menu();
@@ -22,16 +23,19 @@ public class Main {
 				main(null);
 				break;
 			case 2:
+				sc.nextLine();
 				System.out.println("Option 2 sélectionnée.");
+				modifier.menuModif(bibliotheque1.rechercheModifLivre());
+				main(null);
 				break;
 			case 3:
 				System.out.println("Option 3 sélectionnée.");
-				bibliothequeConnectDataBase.voirLivresBDD();
+				BibliothequeConnectDataBase.voirLivresBDD();
 				main(null);
 				break;
 			case 4:
 				System.out.println("Option 4 sélectionnée.");
-				bibliothequeConnectDataBase.rechercheLivresBDD(bibliotheque1.rechercheLivre());
+				BibliothequeConnectDataBase.rechercheLivresBDD(bibliotheque1.rechercheModifLivre());
 				main(null);
 				break;
 			default:
