@@ -45,7 +45,7 @@ public class Test_Bibliotheque{
 		}
 
 	}
-	public static void voirLivre(long id) {
+	public static Livre voirLivre(long id) {
 		EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 		String query = "SELECT l FROM Livre l WHERE l.id = :id";
 
@@ -60,6 +60,7 @@ public class Test_Bibliotheque{
 		} finally {
 			em.close();
 		}
+		return util;
 	}
 	
 
@@ -119,6 +120,6 @@ public class Test_Bibliotheque{
 		} finally {
 			em.close();
 		}
+	}	
 
-	} 
 }

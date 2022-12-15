@@ -16,6 +16,7 @@ mapped to database tables. Database driver, location, userid and pw
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Define the object that should be persisted in the database -->
         <class>com.briefSimplon.bibliotheque.Livre</class>
+        <class>com.briefSimplon.bibliotheque.Reservation</class>
         <properties>
             <!-- Driver for DB database -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />

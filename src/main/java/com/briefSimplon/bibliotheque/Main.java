@@ -1,7 +1,12 @@
 package com.briefSimplon.bibliotheque;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
+
+import org.hibernate.type.LocalDateType;
 
 public class Main {
 
@@ -11,6 +16,7 @@ public class Main {
 		
 		Bibliotheque bibliotheque1 = new Bibliotheque();
 		BibliothequeConnectDataBase bibliotheque1Connect = new BibliothequeConnectDataBase();
+		ReservationDataBase reserv = new ReservationDataBase();
 
 		try {
 			menu();
@@ -35,6 +41,13 @@ public class Main {
 			case 4:
 				System.out.println("Option 4 sélectionnée.");
 				BibliothequeConnectDataBase.rechercheLivresBDD(bibliotheque1.rechercheLivre());
+				main(null);
+				break;
+			case 5:
+				System.out.println("Option 5 sélectionnée.");
+				DateTimeFormatter formatEntree = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+				LocalDate date = LocalDate.parse("2022-12-28", formatEntree);
+				reserv.reserveBook("Accc","Thomas", "Lemay", date);
 				main(null);
 				break;
 			default:
@@ -76,6 +89,7 @@ public class Main {
 		System.out.println("2 - Modifier un livre");
 		System.out.println("3 - Afficher la liste des livres ");
 		System.out.println("4 - Rechercher un livre");
+		System.out.println("5 - Réserver un livre");
 		System.out.println("-------------------------");
 		System.out.print("Veuillez sélectionner une option : ");
 	}
