@@ -72,6 +72,12 @@ public class BibliothequeConnectDataBase{
 					              .append(util.getTitre())
 					              .append("  Auteur : ")
 					              .append(util.getAuteur() + "\r")
+					              .append("  Genre : ")
+					              .append(util.getGenre() + "\r")
+					              .append("  Nombre exemplaire : ")
+					              .append(util.getNombre_exemplaire() + "\r")
+					              .append("  Nombre Page : ")
+					              .append(util.getAuteur() + "\r")
 					);
 			System.out.println(affichageLivres);
 		} catch (NoResultException ex) {
