@@ -1,6 +1,9 @@
 package com.briefSimplon.bibliotheque;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import javax.persistence.NoResultException;
 
 public class Bibliotheque {
 
@@ -26,7 +29,7 @@ public class Bibliotheque {
 	    return livre;
 	}
 	
-	public String rechercheModifLivre() {
+	public String rechercheLivre() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Quel livre voulez vous rechercher: ");
 		String rechercheLivre = sc.nextLine();
@@ -34,17 +37,47 @@ public class Bibliotheque {
 	}
 	
 	public void modifierLivre(){
+		try {
 		Scanner sc = new Scanner(System.in);
-		int choix = sc.nextInt();	
+		System.out.println("Quel livre voulez vous rechercher: ");
+		String rechercheLivre = sc.nextLine();
+		ModifierLivreInTheBase.livreExiste(rechercheLivre);
+		ModifierLivreInTheBase.menuModif();
+		int choix = sc.nextInt();
+	    sc.nextLine();
 		switch(choix) {
 		  case 1:
-		    // code block
+			 System.out.println("Nouveau titre :");
+			 String titreNew = sc.nextLine();
+			 ModifierLivreInTheBase.modifierTitre(rechercheLivre, titreNew);
 		    break;
 		  case 2:
-		    // code block
+			  System.out.println("Nouveau auteur:");
+			  String auteurNew = sc.nextLine();
+			  ModifierLivreInTheBase.modifierAuteur(rechercheLivre, auteurNew);
 		    break;
+		  case 3:
+			  System.out.println("Nouveau genre :");
+			  String genreNew = sc.nextLine();
+			  ModifierLivreInTheBase.modifierGenre(rechercheLivre, genreNew);
+			    break;
+		  case 4:
+			  System.out.println("Nouveau genre :");
+			  int nPNew = sc.nextInt();
+			  ModifierLivreInTheBase.modifierNombrePage(rechercheLivre, nPNew);// code block
+			    break;
+		  case 5:
+			  System.out.println("Nouveau genre :");
+			  int nENew = sc.nextInt();
+			  ModifierLivreInTheBase.modifierNombreExemplaire(rechercheLivre, nENew);// code block
+			    break;
 		  default:
-		    // code block
+			  System.out.println("Mauvais chiffre");
+		}
+		}catch (NoResultException ex) {
+			System.out.println("Le livre n'existe pas");
+		}catch (InputMismatchException e) {
+			System.out.println("chiffre seulement autorisée");
 		}
 	}
 }

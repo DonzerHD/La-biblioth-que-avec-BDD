@@ -11,7 +11,6 @@ public class Main {
 		
 		Bibliotheque bibliotheque1 = new Bibliotheque();
 		BibliothequeConnectDataBase bibliotheque1Connect = new BibliothequeConnectDataBase();
-		ModifierLivre modifier = new ModifierLivre();
 
 		try {
 			menu();
@@ -25,7 +24,7 @@ public class Main {
 			case 2:
 				sc.nextLine();
 				System.out.println("Option 2 sélectionnée.");
-				modifier.menuModif(bibliotheque1.rechercheModifLivre());
+			    bibliotheque1.modifierLivre();
 				main(null);
 				break;
 			case 3:
@@ -35,7 +34,7 @@ public class Main {
 				break;
 			case 4:
 				System.out.println("Option 4 sélectionnée.");
-				BibliothequeConnectDataBase.rechercheLivresBDD(bibliotheque1.rechercheModifLivre());
+				BibliothequeConnectDataBase.rechercheLivresBDD(bibliotheque1.rechercheLivre());
 				main(null);
 				break;
 			default:
@@ -43,6 +42,7 @@ public class Main {
 			}
 		} catch (IllegalArgumentException e) {
 			System.out.println("Ce nombre correspond à aucun du menu !");
+			e.printStackTrace();
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e1) {
@@ -50,6 +50,7 @@ public class Main {
 			}
 			main(null);
 		} catch (InputMismatchException e) {
+			e.printStackTrace();
 			System.out.println("saisie invalide");
 			try {
 				Thread.sleep(1500);
