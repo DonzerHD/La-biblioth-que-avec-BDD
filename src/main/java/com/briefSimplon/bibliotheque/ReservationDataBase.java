@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -44,26 +45,31 @@ public class ReservationDataBase {
 	    }
 	 
 	 public void rendreLivre(String titre, String nom, String prenom){
-		 tq.setParameter("titre", titre);
-		 util = tq.getSingleResult();
-	      Livre livre = Test_Bibliotheque.voirLivre(util.getId());
-	     tr.setParameter("prenom",prenom);
-	     res = tr.getSingleResult();
-	      
-	      
-	        em.getTransaction().begin();
+		 try {
+			tq.setParameter("titre", titre);
+			 util = tq.getSingleResult();
+			  Livre livre = Test_Bibliotheque.voirLivre(util.getId());
+			 tr.setParameter("prenom",prenom);
+			 res = tr.getSingleResult();
+			  
+			  
+			    em.getTransaction().begin();
 
-	     // Récupération de l'entité à partir de la base de données
-	        Reservation entity = em.find(Reservation.class, res.getId());
+			 // Récupération de l'entité à partir de la base de données
+			    Reservation entity = em.find(Reservation.class, res.getId());
 
-	     // Suppression de l'entité
-	     em.remove(entity);
+			 // Suppression de l'entité
+			 em.remove(entity);
+		} catch (NoResultException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Erreur saisie");
+			Main.main(null);
+		}
 
 	     // Fin de la transaction
 	     em.getTransaction().commit();
 
 	     // Fermeture de l'EntityManager
-	     em.close();
 	}	
 	      
 	      

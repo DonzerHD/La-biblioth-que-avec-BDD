@@ -111,7 +111,7 @@ public class Main {
 		System.out.println("3 - Afficher la liste des livres ");
 		System.out.println("4 - Rechercher un livre");
 		System.out.println("5 - Réserver un livre");
-		System.out.println("6 - Ré");
+		System.out.println("6 - Rendre un livre");
 		System.out.println("-------------------------");
 		System.out.print("Veuillez sélectionner une option : ");
 	}
