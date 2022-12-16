@@ -9,79 +9,164 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Classe représentant un livre dans une bibliothèque.
+ *
+ * @author Thomas.L
+ */
 @Entity
 @Table(name = "bibliotheque.livre")
 public class Livre implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	    
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id", updatable = false, nullable = false)
-	    private long id;
-	    
-	    @Column(name = "titre", nullable = false)
-	    private String titre;
-	    
-	    @Column(name = "auteur", nullable = false)
-	    private String auteur;
-	    
-	    @Column(name = "genre", nullable = false)
-	    private String genre;
-	    
-	    @Column(name = "nombre_page", nullable = false)
-	    private int nombre_page;
-	    
-	    @Column(name = "nombre_exemplaire", nullable = false)
-	    private int nombre_exemplaire;
+	 /**
+	  * L'identifiant unique du livre.
+	  */
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id", updatable = false, nullable = false)
+	 private long id;
 
-		public long getId() {
-			return id;
-		}
+	 /**
+	  * Le titre du livre.
+	  */
+	 @Column(name = "titre", nullable = false)
+	 private String titre;
 
-		public void setId(long id) {
-			this.id = id;
-		}
+	 /**
+	  * L'auteur du livre.
+	  */
+	 @Column(name = "auteur", nullable = false)
+	 private String auteur;
 
-		public String getTitre() {
-			return titre;
-		}
+	 /**
+	  * Le genre du livre.
+	  */
+	 @Column(name = "genre", nullable = false)
+	 private String genre;
 
-		public void setTitre(String titre) {
-			this.titre = titre;
-		}
+	 /**
+	  * Le nombre de pages du livre.
+	  */
+	 @Column(name = "nombre_page", nullable = false)
+	 private int nombre_page;
 
-		public String getAuteur() {
-			return auteur;
-		}
+	 /**
+	  * Le nombre d'exemplaires du livre dans la bibliothèque.
+	  */
+	 @Column(name = "nombre_exemplaire", nullable = false)
+	 private int nombre_exemplaire; 
+   
+	 /**
+	  * Retourne l'identifiant unique du livre.
+	  *
+	  * @return l'identifiant unique du livre
+	  */
+	 public long getId() {
+	     return id;
+	 }
 
-		public void setAuteur(String auteur) {
-			this.auteur = auteur;
-		}
+	 /**
+	  * Modifie l'identifiant unique du livre.
+	  *
+	  * @param id le nouvel identifiant unique du livre
+	  */
+	 public void setId(long id) {
+	     this.id = id;
+	 }
+	 
+	 /**
+	  * Retourne le titre du livre.
+	  *
+	  * @return le titre du livre
+	  */
+	 public String getTitre() {
+	     return titre;
+	 }
 
-		public String getGenre() {
-			return genre;
-		}
+	 /**
+	  * Modifie le titre du livre.
+	  *
+	  * @param titre le nouveau titre du livre
+	  */
+	 public void setTitre(String titre) {
+	     this.titre = titre;
+	 }
+	 
+	 /**
+	  * Retourne l'auteur du livre.
+	  *
+	  * @return l'auteur du livre
+	  */
+	 public String getAuteur() {
+	     return auteur;
+	 }
 
-		public void setGenre(String genre) {
-			this.genre = genre;
-		}
+	 
+	 /**
+	  * Modifie l'auteur du livre.
+	  *
+	  * @param auteur le nouvel auteur du livre
+	  */
+	 public void setAuteur(String auteur) {
+	     this.auteur = auteur;
+	 }
 
-		public int getNombre_page() {
-			return nombre_page;
-		}
+	 /**
+	  * Retourne le genre du livre.
+	  *
+	  * @return le genre du livre
+	  */
+	 public String getGenre() {
+	     return genre;
+	 }
 
-		public void setNombre_page(int nombre_page) {
-			this.nombre_page = nombre_page;
-		}
+	 /**
+	  * Modifie le genre du livre.
+	  *
+	  * @param genre le nouveau genre du livre
+	  */
+	 public void setGenre(String genre) {
+	     this.genre = genre;
+	 }
 
-		public int getNombre_exemplaire() {
-			return nombre_exemplaire;
-		}
+	 /**
+	  * Retourne le nombre de pages du livre.
+	  *
+	  * @return le nombre de pages du livre
+	  */
+	 public int getNombre_page() {
+	     return nombre_page;
+	 }
 
-		public void setNombre_exemplaire(int nombre_exemplaire) {
-			this.nombre_exemplaire = nombre_exemplaire;
-		}
+	 /**
+	  * Modifie le nombre de pages du livre.
+	  *
+	  * @param nombre_page le nouveau nombre de pages du livre
+	  */
+	 public void setNombre_page(int nombre_page) {
+	     this.nombre_page = nombre_page;
+	 }
 
+	 /**
+	  * Retourne le nombre d'exemplaires du livre dans la bibliothèque.
+	  *
+	  * @return le nombre d'exemplaires du livre dans la bibliothèque
+	  */
+	 public int getNombre_exemplaire() {
+	     return nombre_exemplaire;
+	 }
+
+	 /**
+	  * Modifie le nombre d'exemplaires du livre dans la bibliothèque.
+	  *
+	  * @param nombre_exemplaire le nouveau nombre d'exemplaires du livre dans la bibliothèque
+	  */
+	 public void setNombre_exemplaire(int nombre_exemplaire) {
+	     this.nombre_exemplaire = nombre_exemplaire;
+	 }
+
+	 
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}

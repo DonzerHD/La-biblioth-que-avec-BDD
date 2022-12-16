@@ -45,9 +45,30 @@ public class Main {
 				break;
 			case 5:
 				System.out.println("Option 5 sélectionnée.");
+				System.out.println("Quel livre voulez vous réserver ?");
+				sc.nextLine();
+			    String livre = sc.nextLine();
+			    System.out.println("Votre nom : ");
+			    String nom = sc.nextLine();
+			    System.out.println("Votre prénom  :");
+			    String prenom = sc.nextLine();
+			    System.out.println("Date rendue : ");
+			    String dateE = sc.nextLine();
 				DateTimeFormatter formatEntree = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-				LocalDate date = LocalDate.parse("2022-12-28", formatEntree);
-				reserv.reserveBook("Accc","Thomas", "Lemay", date);
+				LocalDate date = LocalDate.parse(dateE, formatEntree);
+				reserv.reserverLivre(livre, nom , prenom , date);
+				main(null);
+				break;
+			case 6:
+				System.out.println("Option 5 sélectionnée.");
+				System.out.println("Quel livre voulez vous rendre ?");
+				sc.nextLine();
+			    String livreR = sc.nextLine();
+			    System.out.println("Votre nom : ");
+			    String nomR = sc.nextLine();
+			    System.out.println("Votre prénom  :");
+			    String prenomR = sc.nextLine();
+			    reserv.rendreLivre(livreR, nomR, prenomR);
 				main(null);
 				break;
 			default:
@@ -90,6 +111,7 @@ public class Main {
 		System.out.println("3 - Afficher la liste des livres ");
 		System.out.println("4 - Rechercher un livre");
 		System.out.println("5 - Réserver un livre");
+		System.out.println("6 - Ré");
 		System.out.println("-------------------------");
 		System.out.print("Veuillez sélectionner une option : ");
 	}

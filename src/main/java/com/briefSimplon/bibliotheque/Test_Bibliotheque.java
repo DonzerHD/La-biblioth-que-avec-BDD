@@ -54,7 +54,6 @@ public class Test_Bibliotheque{
 		Livre util = null;
 		try {
 			util = tq.getSingleResult();
-			System.out.println(util.getTitre() + " " + util.getAuteur());
 		} catch (NoResultException ex) {
 			ex.printStackTrace();
 		} finally {

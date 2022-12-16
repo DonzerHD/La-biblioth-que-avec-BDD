@@ -12,27 +12,50 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Classe représentant une réservation dans la bibliothèque.
+ * 
+ * @author Simplon
+ */
 @Entity
 @Table(name = "bibliotheque.reservation")
 public class Reservation {
-	    
-		@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "id_reservation", updatable = false, nullable = false)
-	    private long id;
-		
-		@Column(name = "prenom", nullable = false)
-	    private String prenom;
-	    
-	    @Column(name = "nom", nullable = false)
-	    private String nom;
-	    
-	    @Column(name = "date_reserver", nullable = false)
-	    private LocalDate date_reserver;
-	    
-	    @Column(name = "date_rendue", nullable = false)
-	    private LocalDate date_rendue;
+	
+	/**
+	 * Identifiant unique de la réservation.
+	 */
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_reservation", updatable = false, nullable = false)
+    private long id;
+	
+	/**
+	 * Prénom de la personne qui a réservé le livre.
+	 */
+	@Column(name = "prenom", nullable = false)
+    private String prenom;
+    
+    /**
+     * Nom de la personne qui a réservé le livre.
+     */
+    @Column(name = "nom", nullable = false)
+    private String nom;
+    
+    /**
+     * Date à laquelle le livre a été réservé.
+     */
+    @Column(name = "date_reserver", nullable = false)
+    private LocalDate date_reserver;
+    
+    /**
+     * Date à laquelle le livre doit être rendu.
+     */
+    @Column(name = "date_rendue", nullable = false)
+    private LocalDate date_rendue;
 
+    /**
+     * Id du livre
+     */
 	    @ManyToOne
 	    @JoinColumn(name = "id")
 	    private Livre livre;

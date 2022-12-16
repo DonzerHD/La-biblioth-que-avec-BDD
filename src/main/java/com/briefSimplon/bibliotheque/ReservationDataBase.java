@@ -11,20 +11,19 @@ import javax.persistence.TypedQuery;
 
 public class ReservationDataBase {
 	static String query = "SELECT u FROM Livre u WHERE u.titre LIKE :titre";
+	static String query1 = "SELECT u FROM Reservation u WHERE u.prenom LIKE :prenom";
 	static Livre util = null;
+	static Reservation res = null;
 	protected static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("library");
 	static EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 	static TypedQuery<Livre> tq = em.createQuery(query, Livre.class);
+	static TypedQuery<Reservation> tr = em.createQuery(query1, Reservation.class);
 	
-	public void reserveBook(String titre,String nom, String prenom, LocalDate donne) {
+	public void reserverLivre(String titre,String nom, String prenom, LocalDate donne) {
 		tq.setParameter("titre", titre);
 		util = tq.getSingleResult();
         Livre livre = Test_Bibliotheque.voirLivre(util.getId());
-
-        if (livre == null) {
-            throw new IllegalArgumentException("Invalid book or user ID");
-        }
-
+        
         Reservation reservation = new Reservation();
         reservation.setLivre(livre);
         reservation.setNom(nom);
@@ -43,4 +42,30 @@ public class ReservationDataBase {
 	        entityManager.getTransaction().commit();
 	        entityManager.close();
 	    }
-}
+	 
+	 public void rendreLivre(String titre, String nom, String prenom){
+		 tq.setParameter("titre", titre);
+		 util = tq.getSingleResult();
+	      Livre livre = Test_Bibliotheque.voirLivre(util.getId());
+	     tr.setParameter("prenom",prenom);
+	     res = tr.getSingleResult();
+	      
+	      
+	        em.getTransaction().begin();
+
+	     // Récupération de l'entité à partir de la base de données
+	        Reservation entity = em.find(Reservation.class, res.getId());
+
+	     // Suppression de l'entité
+	     em.remove(entity);
+
+	     // Fin de la transaction
+	     em.getTransaction().commit();
+
+	     // Fermeture de l'EntityManager
+	     em.close();
+	}	
+	      
+	      
+	 }
+
